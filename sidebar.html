@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="prin.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-container">
+        <img src="img/eva01.png" alt="Logo" class="logo">
+    </div>
+</header>
+
+<!-- Contenido Principal -->
+<div class="main-content">
+  <section class="objective-section">
+    <h1>¿Qué somos?</h1>
+    <p>NEOCOREX es una plataforma que fue creada para universitarios visionarios que buscan encontrar con colaboradores, asesores y compañeros que compartan sus mismos objetivos. Su propósito es facilitar la creación de redes de trabajo que permitan impulsar grandes proyectos, dándoles la relevancia que merecen y potenciando su desarrollo a través del trabajo en equipo.
+
+    </p>
+  </section>
+
+  <!-- Sección de servicios -->
+  <section>
+    <CEnter><h1>¿Cómo funciona?</h1></CEnter>
+    <div class="services-container">
+        <a href="#" class="service">
+            <h2>Únete.</h2>
+            <p>Primero creamos una cuenta o iniciamos sesión para acceder. Clic para el inicio de sesión.</p>
+        </a>
+        <a href="#" class="service">
+            <h2>Interfaz</h2>
+            <p>Al acceder te redirigira a la pagina de proyectos aqui puedes buscar o subir un proyecto en la parte superior derecha . Clic para más información.</p>
+        </a>
+        <a href="#" class="service">
+            <h2>Chat entre usuarios</h2>
+            <p>NEOCOREX contiene un sistema de chat para todos los interesados para contactar el dueño. Clic para más información.</p>
+        </a>
+        <a href="#" class="service">
+            <h2>Términos de uso</h2>
+            <p>Todo listo! recuerda leer los terminos de uso y no dejar de innovar!. Clic para más información.</p>
+        </a>
+    </div>
+</section>
+
+  <!-- Sección de contacto -->
+  
+
+  <div id="mySidenav" class="sidenav">
+    <div>
+      <div class="user-view">
+        <a href="perfil.php"><img class="circle" src="img/USER.png" height="80px" width="80px"></a>
+        <a href="perfil.php"><span class="name">Usuario</span></a>
+        <a href=""><span class="email">Email</span></a>
+      </div>
+      <a href="sesio.php">Inicio de sesión</a>
+      <a href="peticion.php">Proyectos</a>
+      <a href="chats.php">Chats</a>
+      <a href="terms.html">Términos de uso</a>
+      <a href="ms.html">Misión y Visión</a>
+      <a href="contacto.php">Contáctanos</a>
+    </div>
+  
+    <!-- FOOTER CON VIDEO -->
+    <div class="foter">
+      <video id="logoVideo" class="logo-video" src="img/eva00.mp4" muted width="300px" height="200px"></video>
+    </div>
+  
+    <!-- APARTADO DE ANUNCIOS -->
+    <div class="ads">
+      <img src="img/ad1.jpg" alt="Ad 1" />
+      <img src="img/ad2.jpg" alt="Ad 2" />
+    </div>
+  
+    <!-- BOTÓN DE CIERRE -->
+    <button class="closebtn" onclick="closeNav()">
+      <img src="img/beteglow.png" width="150px" height="75px" />
+    </button>
+  </div>
+  
+  
+  <span id="openBtn" class="btnopen" onclick="openNav()"><img src="img/beteglow.png"  width="150px" height="75px"></span>
+  
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="logo-container">
+    <div class="logo-track">
+      <div class="footer">
+        <div class="logo-container">
+          <div class="logo-track">
+         
+          </div>
+        </div>
+      </div>
+      
+     
+    </div>
+  </div>
+  <img src="img/ercoout.png" alt="" class="logo-empresa">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const logoTrack = document.querySelector('.logo-track');
+  const totalLogos = 5; // Número de logos originales
+  const totalDuplication = 10; // Número de veces que duplicamos los logos para llenar el espacio
+
+  // Crear los logos y agregarlos al contenedor
+  for (let i = 1; i <= totalLogos; i++) {
+    const logo = document.createElement('img');
+    logo.src = `img/logo${i}.jpg`; // Asegúrate de que la ruta de los logos sea correcta
+    logo.alt = `Logo ${i}`;
+    logoTrack.appendChild(logo);
+  }
+
+  // Duplicar los logos varias veces para llenar el espacio
+  for (let i = 1; i <= totalDuplication; i++) {
+    for (let j = 1; j <= totalLogos; j++) {
+      const logoClone = document.createElement('img');
+      logoClone.src = `img/logo${j}.jpg`; // Asegúrate de que la ruta de los logos sea correcta
+      logoClone.alt = `Logo ${j}`;
+      logoTrack.appendChild(logoClone);
+    }
+  }
+});
+  function openNav() {
+  let sidenav = document.getElementById("mySidenav");
+  let closeBtn = document.getElementById("closeBtn");
+
+  sidenav.style.width = "315px";
+  sidenav.classList.add("open");
+  sidenav.classList.remove("closing"); // Aseguramos que no tenga la clase de cierre
+  document.getElementById("openBtn").style.display = "none"; // Ocultamos el botón de abrir
+
+  // Reproducir el video y detenerlo al final
+  let video = document.getElementById("logoVideo");
+  video.currentTime = 0; // Reiniciar video cada vez que se abre
+  video.play();
+  
+  video.onended = function() {
+    video.currentTime = video.duration; // Mantiene el último frame
+  };
+}
+
+function closeNav() {
+  let sidenav = document.getElementById("mySidenav");
+  let closeBtn = document.getElementById("closeBtn");
+
+  sidenav.classList.add("closing"); // Agregamos la clase para animar el cierre
+
+  setTimeout(function () {
+    sidenav.style.width = "0";
+    sidenav.classList.remove("open");
+    sidenav.classList.remove("closing"); // Quitamos la clase para que se pueda volver a abrir
+    document.getElementById("openBtn").style.display = "block"; // Mostramos el botón de abrir
+  }, 400); // Esperamos a que termine la animación antes de cerrar completamente
+}
+
+</script>
+</body>
+</html>

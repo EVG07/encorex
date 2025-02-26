@@ -1,0 +1,228 @@
+/* Establecer una paleta de colores vibrantes pero profesionales */
+:root {
+    --primary-color: #F5F5F5;   /* Gris claro elegante como color principal */
+    --secondary-color: #73c4db; /* Azul de Erco */
+    --accent-color: #73c4db;    /* Rojo coral brillante */
+    --light-background: #FFFFFF; /* Fondo blanco limpio */
+    --text-color: #1C1C1C;      /* Texto gris oscuro */
+    --border-color: #9B7EBB;    /* Morado suave para bordes */
+    --secondary-accent: #A891C2; /* Morado claro suave */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo de las secciones del contenido */
+section {
+    width: 65%;  /* Ocupa el 70% del ancho */
+    margin: 20px auto;  /* Centrado horizontal con un margen superior e inferior */
+    padding: 20px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--border-color); /* Usamos el morado suave como borde */
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out forwards;
+    transition: background-color 0.3s ease;
+    text-align: justify;
+    display: block; /* Asegura que el elemento se comporte como bloque */
+}
+
+
+.service {
+    font-size: 1.1rem;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, font-size 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    border: 2px solid var(--border-color);
+    transform: scale(0.95); /* Reduce el tamaño de cada servicio en un 15% */
+}
+
+
+.service:hover {
+    transform: scale(1.0); /* Aumento al hacer hover */
+    font-size: 1.2rem;
+    color: var(--secondary-color); /* Cambia al azul Erco al hacer hover */
+}
+
+.service h2 {
+    color: var(--secondary-color); /* Azul Erco para los títulos */
+}
+
+.service p {
+    color: var(--text-color); /* Gris oscuro para la descripción */
+}
+
+/* Títulos de las secciones */
+h1, h2, h3 {
+    color: var(--secondary-color); /* Azul Erco para títulos */
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+/* Estilo de los párrafos */
+p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Enlaces */
+a {
+    color: var(--secondary-color); /* Azul Erco como color principal de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FF6F61; /* Color de acento más brillante al pasar el cursor */
+}
+
+/* Botones */
+button {
+    background-color: var(--accent-color);
+    color: var(--light-background);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #9B7EBB;
+}
+
+/* Tarjetas o contenedores con bordes redondeados */
+.card {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Fondo de las imágenes con bordes redondeados */
+img:hover {
+    opacity: 0.8;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-background);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 8px 15px;
+    }
+  
+}
+/* Clase para el contenedor del formulario de inicio de sesión */
+.login-container {
+    width: 40%;  /* Ocupa el 70% del ancho */
+    margin: 0 auto;  /* Centra el contenedor */
+    padding: 30px;
+    background-color: var(--primary-color);  /* Fondo claro y elegante */
+    border-radius: 10px;
+    border: 2px solid var(--border-color);  /* Borde suave de color morado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Sombra suave */
+    animation: fadeInUp 1.5s ease-out forwards;  /* Animación al aparecer */
+}
+
+ 
+/* Estilo de los campos de entrada dentro del formulario */
+.login-container input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-background);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo cuando el campo de entrada está enfocado */
+.login-container input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+/* Estilo del botón de inicio de sesión */
+.login-container button {
+    background-color: var(--accent-color);
+    color: var(--light-background);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: 100%;  /* Hace que el botón ocupe todo el ancho del formulario */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.login-container button:hover {
+    background-color: #9B7EBB;
+}
+@media (max-width: 768px) {
+    .login-container {
+        width: 60%;  /* Ocupa el 70% del ancho */
+
+    }
+}

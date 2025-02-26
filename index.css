@@ -1,0 +1,445 @@
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  background: #ffffff;
+  padding: 0;
+  flex-direction: column;
+  height: 100vh;
+}
+.fondo {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('img/back.png');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .fondo {
+      transform: rotate(90deg);
+  }
+}
+
+
+/* Contenedor principal */
+.vacio {
+  display: flex;
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  width: 300px; /* Contenedor de 300px en pantallas grandes */
+  gap: 20px;
+  flex-wrap: wrap; /* Permite que el contenido se ajuste en pantallas más pequeñas */
+}
+
+.vacio img {
+  width: 350px; /* Imagen de 350px en pantallas grandes */
+  height: 350px; /* Imagen cuadrada de 350px */
+  object-fit: cover; /* Ajuste de la imagen para cubrir el área del contenedor */
+}
+
+.vacio .vacio {
+  max-width: 200px; /* Limitar el texto a un ancho de 200px */
+  text-align: center;
+  font-size: 16px; /* Tamaño de fuente por defecto */
+  color: #333;
+}
+
+.contenedor-movil {
+  display: none; /* Oculto por defecto en PC */
+}
+
+@media (max-width: 768px) {
+  .vacio{
+    display: none;
+  }
+  .contenedor-movil {
+      display: flex; /* Se muestra solo en móviles */
+      position: fixed;
+      width: 100%;
+      height: 80vh; /* 80% de la altura de la pantalla */
+      top: 50%; /* Centra verticalmente */
+      left: 50%; /* Centra horizontalmente */
+      transform: translate(-50%, -50%); /* Ajusta la posición para centrado exacto */
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+      backdrop-filter: blur(5px); /* Efecto de desenfoque */
+      z-index: 9;
+  }
+
+  .imagen-centrada {
+      width: 250px;
+      height: 250px;
+      object-fit: contain;
+  }
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* Estilos del header */
+/* Estilos del header */
+.header {
+  background: #E0E0E0;
+  display: flex;
+  padding: 0.5rem 5%;
+  font-size: 24px;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+  align-items: center;
+  justify-content: center; /* Centramos el contenido del header */
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  z-index: 10;
+  position: relative;
+}
+
+/* Contenedor del logo y eslogan */
+.logo-container {
+  display: flex;
+  flex-direction: column; /* Organiza logo y eslogan en columna */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos del logo */
+.logo {
+  width: 400px; /* Ajusta el tamaño del logo */
+  height: auto;
+}
+
+/* Estilos del eslogan */
+.slogan {
+  margin-top: 5px; /* Menos espacio entre el logo y el eslogan */
+  font-size: 18px; /* Tamaño del eslogan */
+  color: #333; /* Color del eslogan */
+  text-align: center; /* Asegura que el eslogan esté centrado */
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+
+/* Sidebar */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0; /* Blanco grisáceo */
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.sidenav a {
+  padding: 12px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #555;
+  display: block;
+  transition: 0.3s;
+  position: relative;
+}
+
+.sidenav a:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #2f607c;
+}
+
+
+/* Botón de cierre inicial */
+.sidenav .closebtn {
+  opacity: 0.7;
+
+  position: absolute;
+  top: 50%;
+  left: 65%; /* Comienza más atrás */
+  transform: translate(-50%, -50%) rotate(45deg); /* Empieza en 45° */
+  font-size: 36px;
+  cursor: pointer;
+  color: #555;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.4s ease-in-out, left 0.4s ease-in-out;
+}
+
+/* Cuando el menú se abre */
+.sidenav.open .closebtn {
+  transform: translate(-50%, -50%) rotate(90deg); /* Rota a 90° */
+  left: 80%; /* Se mueve hacia adelante */
+}
+
+/* Cuando se cierra, animamos antes de ocultarlo */
+.sidenav.closing .closebtn {
+  transform: translate(-50%, -50%) rotate(45deg); /* Regresa a 45° */
+  left: 65%; /* Se desliza hacia atrás */
+}
+
+/* Estilos del botón de apertura */
+.btnopen {
+  position: fixed;
+  left: -15px;
+  top: 49%;
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.7;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1001;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Cuando el menú está abierto, el botón de apertura rota a 90° */
+.sidenav.open + .btnopen {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+
+/* Usuario */
+.user-view {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-view img.circle {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #ddd;
+}
+
+.user-view .name,
+.user-view .email {
+  display: block;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Footer con video */
+.sidenav .footer {
+  position: relative;
+  width: 100%;
+}
+
+.footer video.logo-video {
+  width: 100%;
+  display: block;
+  align-items: center;
+  padding: 10px 20px;
+  bottom: 10px;
+}
+
+.footer img.logo-empresa {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 100px;
+  opacity: 0.8;
+}
+
+/* Ocultar botón cuando sidebar está abierta */
+.sidenav.open + .btnopen {
+  display: none;
+}
+
+/* Contenido principal */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 0;
+  transition: margin-left 0.5s;
+}
+
+.sidenav.open ~ .main-content {
+  margin-left: 300px;
+}
+.footer {
+  background-color: #E0E0E0; /* Gris oscuro */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
+  z-index: 10; /* Aseguramos que el footer esté por encima de otros elementos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Agregamos una sombra para separar del contenido */
+  margin-top: 20px; /* Para que no toque directamente la parte superior */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  overflow: hidden; /* Oculta los logos fuera del área visible */
+  position: relative;
+}
+
+.logo-track {
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+  animation: scrollLogos 60s linear infinite; /* Hacemos la animación más lenta (40s en lugar de 20s) */
+}
+
+.logo-track img {
+  height: 50px; /* Ajusta el tamaño de los logos */
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 100px; /* Espacio de 100px entre los logos */
+}
+.movlog-container {
+  display: none;
+}
+.movlog{
+  display: none;
+}
+
+/* Animación para el movimiento continuo de derecha a izquierda */
+@keyframes scrollLogos {
+  from {
+    transform: translateX(0); /* Comienza fuera de la pantalla */
+  }
+  to {
+    transform: translateX(-100%); /* Termina fuera de la pantalla, moviéndose hacia la izquierda */
+  }
+}
+@media screen and (max-width: 768px) {
+  /* Eliminar header en móviles */
+  .movlog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo centrado */
+.movlog {
+    max-width: 250px; /* Ajusta el tamaño del logo */
+    height: auto;
+}
+  .header {
+    display: none;
+  }
+
+  /* Sidenav cerrado de inicio */
+  .sidenav {
+    width: 0;
+    transition: 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  /* Cuando la sidenav se abre */
+  .sidenav.open {
+    width: 250px; /* Ancho de la sidenav cuando esté abierta */
+  }
+
+  /* Mostrar el contenido principal con el margen izquierdo cuando la sidenav esté abierta */
+  .sidenav.open ~ .main-content {
+    margin-left: 250px;
+  }
+
+  /* Ajustes en la imagen de la logo y los enlaces en la sidenav */
+  .user-view img.circle {
+    margin: 10px auto;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .nav-links a {
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .sidenav a {
+    padding: 12px;
+    text-decoration: none;
+    color: #555;
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  /* Modificaciones del footer */
+  .foter {
+    padding-top: 50px;
+    text-align: center;
+  }
+  .footer {
+    background-color: #E0E0E0; /* Gris oscuro */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
+    z-index: 10; /* Aseguramos que el footer esté por encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Agregamos una sombra para separar del contenido */
+    margin-top: 20px; /* Para que no toque directamente la parte superior */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+
+  .logo-video {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Sección de anuncios debajo del video */
+  .ads {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .ads img {
+    width: 90%;
+    max-width: 250px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Ajustes para la main content */
+  .main-content {
+    padding: 20px;
+    margin-left: 0;
+    transition: margin-left 0.5s;
+  }
+}
