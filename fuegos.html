@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuegos artificiales</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .particula {
+            width: 8px;
+            height: 8px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .particula[data-padre="false"] {
+            width: 5px;
+            height: 5px;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fondo {
+            position: absolute;
+            bottom: -100px;
+            opacity: .4;
+        }
+
+        .texto-central {
+            color: white;
+            font-size: 4rem; /* Tamaño grande */
+            text-align: center;
+            position: absolute;
+            z-index: 10;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="ou.webp" id="fondo" />
+    
+    <!-- Texto centrado en la pantalla -->
+    <div class="texto-central">
+       TE QUIEROOOOO. <br>
+       (me morí de pena al ponerlo)
+    </div>
+
+    <script src="fuegos.js"></script>
+    <audio id="sorpresaAudio" autoplay muted>
+        <source src="ou.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        // Verifica si el audio comenzó en la página anterior
+        if (localStorage.getItem("audioStarted") === "true") {
+            const audio = document.getElementById("sorpresaAudio");
+            audio.currentTime = 5; // Ajusta el tiempo de inicio según sea necesario
+            audio.muted = false; // Desactiva el mute
+            localStorage.removeItem("audioStarted"); // Elimina el valor después de usarlo
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>quisieras?</title>
+  <link rel="stylesheet" href="cora.css">
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at center, #1b2735, #090a0f);
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+.contador {
+  position: absolute;
+  top: 10%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f39c12;
+  z-index: 10;
+}
+
+.cristal {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 40px;
+  width: 1000px;
+  max-width: 90%;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(173, 216, 230, 0.3), 0 0 60px rgba(255, 255, 255, 0.1);
+  animation: levitar 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+.cristal p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+.cristal .propuesta {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #883aee;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+@keyframes levitar {
+  0%, 100% { transform: translateY(0px) rotateY(0deg); }
+  50% { transform: translateY(-15px) rotateY(2deg); }
+}
+
+/* Estilos de las ramas */
+.rama {
+  position: absolute;
+  background: #4f9d71;
+  width: 2px;
+  height: 50px;
+  animation: crecer 8s ease-in-out infinite alternate;
+}
+
+/* Rama izquierda */
+.rama.izq {
+  left: -10%;
+  bottom: -50%;
+  transform: rotate(-20deg);
+  animation-delay: 1s;
+}
+
+.rama.izq::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #4f9d71;
+  top: 20px;
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.rama.izq::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #4f9d71;
+  top: 20px;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+/* Rama derecha */
+.rama.der {
+  right: -10%;
+  top: -50%;
+  transform: rotate(20deg);
+  animation-delay: 1s;
+}
+
+.rama.der::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #4f9d71;
+  top: 20px;
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.rama.der::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #4f9d71;
+  top: 20px;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+/* Animación para el crecimiento de las ramas */
+@keyframes crecer {
+  0% { height: 50px; }
+  100% { height: 120px; }
+}
+
+/* Detalles decorativos como estrellas */
+.estrella {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: parpadeo 2s infinite ease-in-out;
+}
+
+.estrella:nth-child(1) { top: 20%; left: 10%; }
+.estrella:nth-child(2) { top: 80%; left: 30%; animation-delay: 1s; }
+.estrella:nth-child(3) { top: 50%; left: 70%; animation-delay: 0.5s; }
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 767px) {
+  body {
+    padding: 20px;
+  }
+
+  .contador {
+    font-size: 1.5rem;
+    top: 5%;
+  }
+
+  .cristal {
+    padding: 20px;
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .cristal p {
+    font-size: 1rem;
+  }
+
+  .cristal .propuesta {
+    font-size: 1.4rem;
+  }
+
+  .rama {
+    width: 1.5px;
+  }
+
+  /* Estilo para las ramas móviles */
+  .rama.izq, .rama.der {
+    left: -5%;
+    right: -5%;
+    bottom: -30%;
+  }
+
+  .rama.izq::before, .rama.izq::after, .rama.der::before, .rama.der::after {
+    width: 1.5px;
+    height: 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Contador hacia una nueva página -->
+  <div id="contador" class="contador">5</div>
+
+  <div class="cristal">
+    <div class="rama izq"></div>
+    <div class="rama der"></div>
+    <p>Hay algo que quiero decirte,<br>
+algo que no quiero decir a medias.<br>
+Quiero que seamos novios,<br>
+pero antes quiero prepararlo,<br>
+cuidar cada detalle,<br>
+porque tú no eres cualquier historia,<br>
+y lo nuestro merece un momento especial.</p>
+    
+    <!-- Propuesta directa -->
+  </div>
+
+  <script>
+      let contadorElement = document.getElementById("contador");
+    let timeLeft = 5;
+
+    const redirectToPage = () => {
+      // Almacena que el audio ha comenzado en localStorage
+      localStorage.setItem("audioStarted", "true");
+      window.location.href = "fuegos.html"; // Cambia esto al enlace que desees
+    }
+
+    const countdown = setInterval(function() {
+      contadorElement.innerText = `${timeLeft < 5 ? + timeLeft : timeLeft}`;
+      timeLeft--;
+      if (timeLeft < 0) {
+        clearInterval(countdown);
+        redirectToPage();
+      }
+    }, 1000);
+  
+  </script>
+
+</body>
+</html>

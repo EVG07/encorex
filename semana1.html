@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 1 - Lectura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="lectura-container">
+        <h2>QUE PENA!</h2>
+        <p>
+        No siempre sé decirlo bien,<br>
+a veces el amor se me queda atorado en la garganta,<br>
+no porque sea poco,<br>
+sino porque es demasiado.<br>
+<br>
+Perdón si no supe demostrar<br>
+todo lo que siento por ti,<br>
+si mis silencios no explicaron<br>
+lo mucho que te pienso<br>
+y lo profundo que te elijo.<br>
+<br>
+Te amo más de lo que sé amar ahora,<br>
+y por eso mismo quiero aprender,<br>
+equivocarme, crecer,<br>
+volverme mejor<br>
+solo para cuidarte como mereces.<br>
+<br>
+No te amo perfecto,<br>
+pero te amo real,<br>
+y si amar también se aprende,<br>
+déjame aprender contigo,<br>
+porque por ti<br>
+quiero hacerlo bien.
+        
+        </p>
+        
+        <a href="espejo.html">continuar</a> <br>
+        <a href="https://youtu.be/Zv0BMaVYYAM?si=PIjcdJ5Ipm2611wn">CANCIÓN DE FONDO</a>
+    </div>
+<audio id="sorpresaAudio" autoplay muted>
+    <source src="bes.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+<script>
+    // Obtén el elemento de audio
+    const audio = document.getElementById("sorpresaAudio");
+
+    // Intenta desactivar el mute después de un breve retraso
+    setTimeout(() => {
+        audio.currentTime = 75; // Ajusta el tiempo de inicio según sea necesario
+        audio.muted = false; // Desactiva el mute
+    }, 1000); // 1 segundo de retraso (ajusta según sea necesario)
+</script>
+</body>
+</html>
