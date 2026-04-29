@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parte 2</title>
+    <link rel="stylesheet" href="cora.css">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #000000, #000000);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Botón */
+        .open-flower-btn {
+          background: white;
+             border: 3px solid #cdaf19;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+         cursor: pointer;
+         transition: 0.3s;
+         box-shadow: 0 0 15px rgb(199 201 40);
+        }
+
+        .open-flower-btn:hover {
+            background: rgb(247, 228, 65);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Contenedor de la flor */
+        .flower-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(0);
+            transition: transform 1s ease-in-out;
+        }
+
+        /* Pétalos */
+        .petal {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background:radial-gradient(circle at center,#fcfcfc, #cba1ee, #8a3dd1);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 1s ease-in-out;
+            transform-origin: bottom center; /* Asegura que los pétalos giren desde el centro */
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
+        .petal:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
+        .petal:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
+        .petal:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
+        .petal:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
+
+        /* Centro de la flor */
+        .center {
+            top: 55%;
+    width: 60px;
+    height: 60px;
+              background: linear-gradient(to bottom right,yellow, #ffffff, yellow);
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Mensaje animado */
+        .message {
+            position: relative;
+    top: 10%;
+            font-size: 22px;
+            color:  rgb(247, 228, 65);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 20px;
+        }
+         
+        .particula {
+            width: 8px;
+            height: 8px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .particula[data-padre="false"] {
+            width: 5px;
+            height: 5px;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fondo {
+            position: absolute;
+            bottom: -100px;
+            opacity: .4;
+        }
+
+        .texto-central {
+            color:  rgb(247, 228, 65);
+            font-size: 2rem; /* Tamaño grande */
+            text-align: center;
+            position: absolute;
+            z-index: 10;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+   
+    <script src="corazon.js" ></script>
+
+    <h1 style="color:  rgb(247, 228, 65);">Te amoooo</h1>
+
+    <!-- Botón para abrir la flor -->
+    <button class="open-flower-btn" id="openButton" onclick="bloomFlower()"> Haz clic aquí ✨</button>
+
+    <!-- Contenedor de la flor -->
+     <a href="flor.html">
+    <div class="flower-container" id="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+    </div>
+</a>
+    <!-- Mensaje sorpresa -->
+    <p class="message" id="message"></p>
+
+   <audio id="sorpresaAudio" autoplay muted>
+        <source src="todoonada.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        // Obtén el elemento de audio
+        const audio = document.getElementById("sorpresaAudio");
+
+        // Intenta desactivar el mute después de un breve retraso
+        setTimeout(() => {
+            audio.currentTime = 73;
+            
+
+            audio.muted = false;
+             audio.volume = 0; 
+            let volumen=0;
+            const fade = setInterval(() => {
+            if(volumen<0.8){
+                volumen += 0.05;
+                audio.volume=volumen;
+            }else{
+                clearInterval(fade);
+            }
+        }, 300); // Desactiva el mute
+        }, 1000); // 1 segundo de retraso (ajusta según sea necesario)
+    </script>
+  
+  <script>
+        var gravedad = .5;
+var numHijos = 50;
+
+var numParticulas = 100;
+var particulasCreadas = 0;
+
+function crearParticula() {
+	var particula = document.createElement("div");
+	particula.className="particula";
+
+	var y = window.innerHeight;
+	var x = Math.random() * window.innerWidth;
+
+	particula.style.top = y + "px";
+	particula.style.left = x + "px";
+
+	var velocidadY = -15 - (Math.random() * 15);
+
+	particula.setAttribute("data-velocidad-y", velocidadY);
+	particula.setAttribute("data-velocidad-x", "0");
+	particula.setAttribute("data-padre", "true");
+
+	particula.style.background = getRandomColor();
+
+	document.getElementsByTagName("body")[0].append(particula);
+
+	particulasCreadas++;
+
+	if (particulasCreadas < numParticulas) {
+	    setTimeout(crearParticula, 50 + (Math.random() * 150));
+	}
+}
+
+function start() {
+	crearParticula();
+}
+
+function update() {
+	var particulas = document.getElementsByClassName("particula");
+	for (var p=0; p < particulas.length; p++) {
+		var particula = particulas[p];
+
+		var velocidadY = parseFloat(particula.getAttribute("data-velocidad-y"));
+		velocidadY += gravedad;
+
+		particula.setAttribute("data-velocidad-y", velocidadY);
+
+		var top = particula.style.top ? particula.style.top : "0"; //10px
+		top = parseFloat(top.replace("px", ""));
+		top += velocidadY;
+		particula.style.top = top + "px";
+
+		var velocidadX = parseFloat(particula.getAttribute("data-velocidad-x"));
+
+		var left = particula.style.left ? particula.style.left : "0";
+		left = parseFloat(left.replace("px", ""));
+		left += velocidadX;
+		particula.style.left = left + "px";
+
+		var padre = particula.getAttribute("data-padre");
+
+		if (velocidadY >= 0 && padre === "true") {
+			explotar(particula);
+		}
+
+		if (top > window.innerHeight) {
+			particula.remove();
+		}
+	}
+
+	setTimeout(update, 20);
+}
+
+function explotar(particula) {
+
+	for (var h=0; h < numHijos; h++) {
+		var hijo = document.createElement("div");
+		hijo.className = "particula";
+
+		hijo.style.top = particula.style.top;
+		hijo.style.left = particula.style.left;
+		hijo.style.background = particula.style.background;
+
+		var velocidadY = (Math.random() * 20) - 18;
+		hijo.setAttribute("data-velocidad-y", velocidadY);
+		var velocidadX = (Math.random() * 16) - 8;
+		hijo.setAttribute("data-velocidad-x", velocidadX);
+
+
+		hijo.setAttribute("data-padre", false);
+
+		//Agregar el hijo :) :) :)
+		document.getElementsByTagName("body")[0].append(hijo);
+	}
+
+    particula.remove();
+}
+
+
+
+	
+
+
+
+//utilerias
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+        function bloomFlower() {
+            start();
+
+	        update();
+            document.getElementById("openButton").style.display = "none";
+            let flower = document.getElementById("flower");
+            let petals = document.querySelectorAll(".petal");
+            let center = document.querySelector(".center");
+            let message = document.getElementById("message");
+
+            flower.style.transform = "scale(1)";
+
+            // Mostrar pétalos con retraso
+            petals.forEach((petal, index) => {
+                setTimeout(() => {
+                    petal.style.opacity = "1";
+                }, index * 200); // Reducimos el retraso para que se vea más fluido
+            });
+
+            // Mostrar centro y mensaje después de los pétalos
+            setTimeout(() => {
+                center.style.opacity = "1";
+                message.style.opacity = "1";
+                typeMessage();
+            }, 1600); // Ajustamos el tiempo para que coincida con la animación
+        
+        }
+
+        function typeMessage() {
+            let messageText = "quiero que seas mía, mi esposa y mi todo, quédate y ambos seremos felices por siempre";
+            let messageElement = document.getElementById("message");
+            let index = 0;
+            messageElement.textContent = "";
+
+            function type() {
+                if (index < messageText.length) {
+                    messageElement.textContent += messageText[index];
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+        }
+
+
+    </script>
+
+</body>
+</html>

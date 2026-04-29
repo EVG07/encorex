@@ -23,25 +23,24 @@ body {
 }
 
 .contador {
-  position: absolute;
-  top: 10%;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #f39c12;
-  z-index: 10;
+    position: absolute;
+    top: 20%;
+    font-size: 13rem;
+    font-weight: bold;
+    color: #cbcbcb;
+    z-index: 10;
 }
 
 .cristal {
   position: relative;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  
   border-radius: 30px;
   padding: 40px;
   width: 1000px;
   max-width: 90%;
   text-align: center;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(173, 216, 230, 0.3), 0 0 60px rgba(255, 255, 255, 0.1);
+  
   animation: levitar 6s ease-in-out infinite;
   z-index: 2;
 }
@@ -172,8 +171,7 @@ body {
 
   .cristal {
     padding: 20px;
-    width: 90%;
-    font-size: 1rem;
+   
   }
 
   .cristal p {
@@ -211,25 +209,16 @@ body {
   <div class="cristal">
     <div class="rama izq"></div>
     <div class="rama der"></div>
-    <p>Hay algo que quiero decirte,<br>
-algo que no quiero decir a medias.<br>
-Quiero que seamos más,<br>
-pero antes quiero prepararlo,<br>
-cuidar cada detalle,<br>
-porque tú no eres cualquier historia,<br>
-y lo nuestro merece un momento especial.</p>
-    
-    <!-- Propuesta directa -->
-  </div>
 
-  <script>
+  </div>
+<script>
       let contadorElement = document.getElementById("contador");
     let timeLeft = 5;
 
     const redirectToPage = () => {
       // Almacena que el audio ha comenzado en localStorage
       localStorage.setItem("audioStarted", "true");
-      window.location.href = "fuegos.html"; // Cambia esto al enlace que desees
+      window.location.href = "rosas.html"; // Cambia esto al enlace que desees
     }
 
     const countdown = setInterval(function() {
@@ -242,7 +231,7 @@ y lo nuestro merece un momento especial.</p>
     }, 1000);
   
   </script>
+  
 
 </body>
 </html>
-
